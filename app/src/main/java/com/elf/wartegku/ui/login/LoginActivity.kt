@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.elf.wartegku.R
 import com.elf.wartegku.ui.main.MainActivity
+import com.elf.wartegku.ui.register.RegisterActivity
 import com.elf.wartegku.utils.Constants
 import com.elf.wartegku.utils.ext.gone
 import com.elf.wartegku.utils.ext.toast
@@ -24,9 +25,11 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         observe()
         doLogin()
+        label_login.setOnClickListener { goToRegister() }
     }
 
     private fun observe() = loginViewModel.listenToState().observer(this, Observer { handleUIState(it) })
+    private fun goToRegister() = startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
 
     private fun handleUIState(loginState: LoginState?) {
         loginState?.let {

@@ -14,7 +14,6 @@ import com.github.appintro.AppIntroFragment
 import com.github.appintro.AppIntroPageTransformerType
 import com.github.appintro.model.SliderPage
 
-
 class IntroActivity : AppIntro2(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
