@@ -30,7 +30,7 @@ class CategoryViewModel (private val categoryRepository: CategoryRepository) : V
         })
     }
 
-    private fun fetchCategoriesByDrink() {
+    fun fetchCategoriesByDrink() {
         categoryRepository.fetchCategoriesByDrink(object : ArrayResponse<Category> {
             override fun onSuccess(datas: List<Category>?) {
                 isLoading(false)

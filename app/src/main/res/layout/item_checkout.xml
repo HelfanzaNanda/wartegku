@@ -30,14 +30,6 @@
 
         <TextView
             android:layout_marginBottom="8dp"
-            android:id="@+id/txt_desc"
-            android:textSize="16sp"
-            android:text="Udang Saus Padang + Nasi + Esteh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:layout_marginBottom="8dp"
             android:id="@+id/txt_price"
             android:textSize="16sp"
             android:text="Rp.20.000"
@@ -54,7 +46,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:visibility="gone"
-            android:textSize="11dp"
+            android:textSize="11sp"
             android:layout_alignParentEnd="true"
             android:layout_gravity="end"
             android:text="tambah"

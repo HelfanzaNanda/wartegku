@@ -21,4 +21,5 @@
         <item>@drawable/gorengan</item>
     </string-array>
     <string name="title_activity_detail_store">DetailStoreActivity</string>
+    <string name="title_activity_checkout">CheckoutActivity</string>
 </resources>

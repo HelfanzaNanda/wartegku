@@ -7,12 +7,37 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <RelativeLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="MissingConstraints">
 
+        <ImageView
+            android:layout_marginBottom="5dp"
+            android:id="@+id/img_store"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"/>
+
+        <TextView
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/img_store"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:id="@+id/txt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/txt_name"
+            android:textSize="16sp"
+            android:id="@+id/txt_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/txt_address"
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -26,6 +51,65 @@
             android:layout_centerInParent="true"
             android:fitsSystemWindows="true"
             android:indeterminate="true" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:visibility="gone"
+            android:id="@+id/card_checkout"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="5dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white"
+                    android:text="1 item"
+                    android:id="@+id/txt_qty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_toEndOf="@id/txt_qty"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white"
+                    android:text="19.000"
+                    android:id="@+id/txt_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_below="@id/txt_qty"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white"
+                    android:text="Pongset"
+                    android:id="@+id/txt_name_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_shopping_cart"
+                    app:tint="@android:color/white"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </RelativeLayout>
 

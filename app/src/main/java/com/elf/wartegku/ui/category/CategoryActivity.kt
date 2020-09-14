@@ -79,7 +79,7 @@ class CategoryActivity : AppCompatActivity() {
             if (it.is_food){
                 categoryViewModel.fetchCategoriesByFood()
             }else{
-                categoryViewModel.fetchCategoriesByFood()
+                categoryViewModel.fetchCategoriesByDrink()
             }
         }
     }

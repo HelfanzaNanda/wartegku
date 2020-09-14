@@ -1,6 +1,7 @@
 package com.elf.wartegku.ui.main.home
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -9,13 +10,18 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.elf.wartegku.R
 import com.elf.wartegku.models.Category
+import com.elf.wartegku.models.Food
 import com.elf.wartegku.ui.result_search.ResultSearchActivity
 import com.elf.wartegku.utils.ext.gone
 import com.elf.wartegku.utils.ext.toast
 import com.elf.wartegku.utils.ext.visible
 import com.github.ybq.android.spinkit.style.DoubleBounce
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
+import com.smarteist.autoimageslider.SliderAnimations
+import com.smarteist.autoimageslider.SliderView
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -24,8 +30,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpUI()
+        setUpImageSlider()
         observe()
         btnSearch()
+    }
+
+    private fun setUpImageSlider() {
+        requireView().image_slider.apply {
+            setSliderAdapter(ImageSliderAdapter(requireActivity(), mutableListOf()))
+            setIndicatorAnimation(IndicatorAnimationType.WORM)
+            setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
+            autoCycleDirection = SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
+            indicatorSelectedColor = Color.WHITE
+            indicatorUnselectedColor = Color.GRAY
+            scrollTimeInSec = 4
+        }.startAutoCycle()
     }
 
     private fun setUpUI() {
@@ -46,6 +65,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             .observe(viewLifecycleOwner, Observer { handleCategoriesByFood(it) })
         homeViewModel.listenToCategoriesByDrink()
             .observe(viewLifecycleOwner, Observer { handleCategoriesByDrink(it) })
+        homeViewModel.listenToFoodsLatest().observe(viewLifecycleOwner, Observer { handleFoodsLatest(it) })
+    }
+
+    private fun handleFoodsLatest(list: List<Food>?) {
+        list?.let {
+            requireView().image_slider.sliderAdapter?.let { pagerAdapter ->
+                if (pagerAdapter is ImageSliderAdapter){
+                    pagerAdapter.changelist(it)
+                }
+            }
+        }
     }
 
     private fun handleCategoriesByDrink(list: List<Category>?) {
@@ -114,9 +144,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun fetchCategories() = homeViewModel.fetchCategoriesByFood()
+    private fun fetchFoodsLatest() = homeViewModel.fetchFoodsLatest()
 
     override fun onResume() {
         super.onResume()
         fetchCategories()
+        fetchFoodsLatest()
     }
 }

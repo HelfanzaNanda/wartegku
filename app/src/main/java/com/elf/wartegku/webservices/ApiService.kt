@@ -38,12 +38,12 @@ interface ApiService {
     @GET("api/category/drink")
     fun fetchCategoriesByDrink() : Call<WrappedListResponse<Category>>
 
-    @GET("api/store")
+    @GET("api/store/{category_id}")
     fun fetchStoresByCategory(
         @Path("category_id") category_id : Int
     ) : Call<WrappedListResponse<Store>>
 
-    @GET("api/store/{key}")
+    @GET("api/store/search/{key}")
     fun searchStoresByFood(
         @Path("key") key : String
     ) : Call<WrappedListResponse<Store>>
@@ -52,6 +52,9 @@ interface ApiService {
     fun fetchFoodsByStore(
         @Path("store_id") store_id : Int
     ) : Call<WrappedListResponse<Food>>
+
+    @GET("api/food/latest")
+    fun fetchFoodsLatest() : Call<WrappedListResponse<Food>>
 }
 
 data class WrappedResponse<T>(

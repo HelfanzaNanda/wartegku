@@ -86,6 +86,6 @@ class StoreFragment : Fragment(R.layout.fragment_store){
 
     override fun onResume() {
         super.onResume()
-        //fetchStoresByCategory()
+        fetchStoresByCategory()
     }
 }

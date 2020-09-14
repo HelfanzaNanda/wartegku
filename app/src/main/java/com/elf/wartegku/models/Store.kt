@@ -8,5 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class Store(
     @SerializedName("id") var id : Int? = null,
     @SerializedName("name") var name : String? = null,
-    @SerializedName("logo") var logo : String? = null
+    @SerializedName("logo") var logo : String? = null,
+    @SerializedName("address") var address : String? = null
 ) : Parcelable

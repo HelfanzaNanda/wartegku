@@ -2,9 +2,11 @@ package com.elf.wartegku
 
 import android.app.Application
 import com.elf.wartegku.repositories.CategoryRepository
+import com.elf.wartegku.repositories.FoodRepository
 import com.elf.wartegku.repositories.StoreRepository
 import com.elf.wartegku.ui.category.CategoryViewModel
 import com.elf.wartegku.ui.category.store.StoreViewModel
+import com.elf.wartegku.ui.food.FoodViewModel
 import com.elf.wartegku.ui.main.home.HomeViewModel
 import com.elf.wartegku.ui.result_search.ResultSearchViewModel
 import com.elf.wartegku.webservices.ApiClient
@@ -33,11 +35,13 @@ val retrofitModule = module {
 val repositoryModules = module {
     factory { CategoryRepository(get()) }
     factory { StoreRepository(get()) }
+    factory { FoodRepository(get()) }
 }
 
 val viewModelModules = module {
     viewModel { CategoryViewModel(get()) }
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
     viewModel { ResultSearchViewModel(get()) }
     viewModel { StoreViewModel(get()) }
+    viewModel { FoodViewModel(get()) }
 }
