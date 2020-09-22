@@ -1,4 +1,4 @@
-package com.elf.wartegku.ui.food.detail_store
+package com.elf.wartegku.ui.detail_store
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.elf.wartegku.R
 import com.elf.wartegku.models.Food
-import com.elf.wartegku.ui.food.FoodClickInterface
 import com.elf.wartegku.utils.Constants
 import com.elf.wartegku.utils.ext.gone
 import com.elf.wartegku.utils.ext.visible

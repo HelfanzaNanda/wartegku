@@ -1,4 +1,4 @@
-package com.elf.wartegku.ui.food
+package com.elf.wartegku.ui.detail_store
 
 import com.elf.wartegku.models.Food
 

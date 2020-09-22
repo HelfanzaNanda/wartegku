@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.elf.wartegku.R
 import com.elf.wartegku.models.Store
-import com.elf.wartegku.ui.food.detail_store.DetailStoreActivity
+import com.elf.wartegku.ui.detail_store.DetailStoreActivity
 import kotlinx.android.synthetic.main.item_store.view.*
 
 class StoreAdapter (private var stores : MutableList<Store>, private var context: Context)

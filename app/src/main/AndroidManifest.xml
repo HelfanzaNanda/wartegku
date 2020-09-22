@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.elf.wartegku.ui.food.checkout.CheckoutActivity"
+            android:name="com.elf.wartegku.ui.checkout.CheckoutActivity"
             android:label="@string/title_activity_checkout"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.IntroActivity" />
         <activity
-            android:name="com.elf.wartegku.ui.food.detail_store.DetailStoreActivity"
+            android:name="com.elf.wartegku.ui.detail_store.DetailStoreActivity"
             android:label="@string/title_activity_detail_store"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.result_search.ResultSearchActivity" />

@@ -22,4 +22,6 @@
     </string-array>
     <string name="title_activity_detail_store">DetailStoreActivity</string>
     <string name="title_activity_checkout">CheckoutActivity</string>
+    <string name="message_success">berhasil memesan, silahkan di tunggu</string>
+    <string name="message_not_login">anda belum login, untuk memesan makanan anda harus login dahulu!</string>
 </resources>

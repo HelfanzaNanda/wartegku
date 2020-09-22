@@ -23,49 +23,51 @@
             android:indeterminate="true" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_marginBottom="10dp"
             android:id="@+id/til_note"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="40dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:textSize="14sp"
                 android:hint="Tambahkan Catatan"
                 android:id="@+id/et_note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:layout_marginBottom="10dp"
-            android:id="@+id/linear_order"
+<!--        <LinearLayout-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:id="@+id/linear_order"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <TextView-->
+<!--                android:layout_weight="3"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="16sp"-->
+<!--                android:text="Pesanan"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+<!--        </LinearLayout>-->
+
+        <com.google.android.material.button.MaterialButton
             android:layout_below="@id/til_note"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_weight="3"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:text="Pesanan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_weight="1"
-                android:text="tambah"
-                android:id="@+id/btn_plus"
-                android:layout_width="20dp"
-                android:layout_height="40dp"/>
-
-
-        </LinearLayout>
+            android:layout_alignParentEnd="true"
+            android:textAllCaps="false"
+            android:text="Tambah Pesanan"
+            android:id="@+id/btn_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/btn_plus"
             android:layout_marginBottom="10dp"
-            android:layout_below="@id/linear_order"
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -91,13 +93,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_weight="1"
-                    android:text="lihat detail"
-                    android:id="@+id/btn_detail"
-                    android:layout_width="30dp"
-                    android:layout_height="40dp"/>
-
             </LinearLayout>
 
             <LinearLayout
@@ -121,6 +116,7 @@
                         android:layout_height="match_parent"/>
 
                     <TextView
+                        android:id="@+id/txt_price"
                         android:textSize="14sp"
                         android:text="Rp. 20.000"
                         android:layout_width="wrap_content"
@@ -142,6 +138,7 @@
                         android:layout_height="match_parent"/>
 
                     <TextView
+                        android:id="@+id/txt_postal_fee"
                         android:textSize="14sp"
                         android:text="Rp. 20.000"
                         android:layout_width="wrap_content"
@@ -170,15 +167,14 @@
                         android:layout_height="match_parent"/>
 
                     <TextView
+                        android:id="@+id/txt_total_price"
                         android:textSize="14sp"
                         android:text="Rp. 20.000"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
 
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
 
     </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.elf.wartegku.ui.food.detail_store.DetailStoreActivity">
+    tools:context=".ui.detail_store.DetailStoreActivity">
 
     <include layout="@layout/content_detail_store" />
 

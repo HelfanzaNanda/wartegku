@@ -1,10 +1,10 @@
-package com.elf.wartegku.ui.category.food.checkout
+package com.elf.wartegku.ui.checkout
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
 import com.elf.wartegku.R
 import com.elf.wartegku.models.Food
 import com.elf.wartegku.utils.Constants
@@ -14,11 +14,13 @@ class CheckoutAdapter (private val foods : MutableList<Food>)
     : RecyclerView.Adapter<CheckoutAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        @SuppressLint("SetTextI18n")
         fun bind(food: Food) {
             with(itemView){
-                img_food.load(R.drawable.ayam)
                 txt_name.text = food.name
                 txt_price.text = Constants.setToIDR(food.price!!)
+                txt_total_price.text = Constants.setToIDR(food.price!!.times(food.qty!!))
+                txt_qty.text = "${food.qty}x"
             }
         }
     }

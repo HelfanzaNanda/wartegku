@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        supportActionBar?.hide()
         observe()
         doLogin()
         label_login.setOnClickListener { goToRegister() }
@@ -30,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun observe() = loginViewModel.listenToState().observer(this, Observer { handleUIState(it) })
     private fun goToRegister() = startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+    private fun getExpectResult() = intent.getBooleanExtra("EXPECT_RESULT", false)
 
     private fun handleUIState(loginState: LoginState?) {
         loginState?.let {
@@ -45,10 +47,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun handleSuccess(token: String) {
         Constants.setToken(this@LoginActivity, "Bearer $token")
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        }).also { finish() }
+        if (getExpectResult()){
+            finish()
+        }else{
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }).also { finish() }
+        }
     }
 
     private fun handleLoading(b: Boolean) {

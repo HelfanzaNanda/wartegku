@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.elf.wartegku.ui.food.detail_store.FirstFragment"
+        android:name="com.elf.wartegku.ui.detail_store.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.elf.wartegku.ui.food.detail_store.SecondFragment"
+        android:name="com.elf.wartegku.ui.detail_store.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.elf.wartegku.ui.food.checkout.FirstFragment"
+        android:name="com.elf.wartegku.ui.checkout.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.elf.wartegku.ui.food.checkout.SecondFragment"
+        android:name="com.elf.wartegku.ui.checkout.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 

@@ -6,5 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Order(
-    @SerializedName("id") var id : Int? = null
+    @SerializedName("id") var id : Int? = null,
+    @SerializedName("store_id") var store_id : Int? = null,
+    @SerializedName("foods") var foods : List<FoodSelected> = mutableListOf()
 ) : Parcelable

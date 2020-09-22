@@ -1,4 +1,4 @@
-package com.elf.wartegku.ui.food
+package com.elf.wartegku.ui.detail_store
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,13 +10,16 @@ import com.elf.wartegku.utils.SingleLiveEvent
 class FoodViewModel (private val foodRepository: FoodRepository) : ViewModel(){
     private val state : SingleLiveEvent<FoodState> = SingleLiveEvent()
     private val foods = MutableLiveData<List<Food>>()
-    private val selectedFoods = MutableLiveData<List<Food>>()
     private val filteredFoods = MutableLiveData<List<Food>>()
     private val totalItem = MutableLiveData<Int>()
     private val totalPrice = MutableLiveData<Int>()
 
-    private fun isLoading(boolean: Boolean){ state.value = FoodState.Loading(boolean) }
-    private fun toast(m: String){ state.value = FoodState.ShowToast(m) }
+    private fun isLoading(boolean: Boolean){ state.value =
+        FoodState.Loading(boolean)
+    }
+    private fun toast(m: String){ state.value =
+        FoodState.ShowToast(m)
+    }
 
     fun fetchFoodsByStore(store_id : String) {
         isLoading(true)
@@ -33,7 +36,7 @@ class FoodViewModel (private val foodRepository: FoodRepository) : ViewModel(){
         })
     }
 
-    fun addSelectedProduct(f: Food){
+    fun addSelectedFood(f: Food){
         val tempSelectedFoods = if(foods.value == null){
             mutableListOf()
         } else {
@@ -79,7 +82,7 @@ class FoodViewModel (private val foodRepository: FoodRepository) : ViewModel(){
         foods.postValue(tempSelectedFoods)
     }
 
-    fun deleteSelectedProduct(f: Food){
+    fun deleteSelectedFood(f: Food){
         val tempSelectedFoods = if(foods.value == null){
             mutableListOf()
         } else {
@@ -90,12 +93,6 @@ class FoodViewModel (private val foodRepository: FoodRepository) : ViewModel(){
             tempSelectedFoods.remove(it)
         }
         foods.postValue(tempSelectedFoods)
-    }
-
-    fun setSelectedFoods(foods: List<Food>) {
-        println("foods $foods")
-        selectedFoods.postValue(foods)
-        println("selected ${selectedFoods.value}")
     }
 
     fun filterFoods(fs: List<Food>){
@@ -112,7 +109,6 @@ class FoodViewModel (private val foodRepository: FoodRepository) : ViewModel(){
 
     fun listenToState() = state
     fun listenToFoods() = foods
-    fun listenToSelectedFoods() = selectedFoods
     fun listenToFilteredFoods() = filteredFoods
     fun getTotalItem() = totalItem
     fun getTotalPrice() = totalPrice

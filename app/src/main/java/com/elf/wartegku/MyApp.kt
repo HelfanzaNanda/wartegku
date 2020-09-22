@@ -1,13 +1,14 @@
 package com.elf.wartegku
 
 import android.app.Application
-import com.elf.wartegku.repositories.CategoryRepository
-import com.elf.wartegku.repositories.FoodRepository
-import com.elf.wartegku.repositories.StoreRepository
+import com.elf.wartegku.repositories.*
 import com.elf.wartegku.ui.category.CategoryViewModel
 import com.elf.wartegku.ui.category.store.StoreViewModel
-import com.elf.wartegku.ui.food.FoodViewModel
+import com.elf.wartegku.ui.detail_store.FoodViewModel
+import com.elf.wartegku.ui.checkout.CheckoutViewModel
+import com.elf.wartegku.ui.login.LoginViewModel
 import com.elf.wartegku.ui.main.home.HomeViewModel
+import com.elf.wartegku.ui.register.RegisterViewModel
 import com.elf.wartegku.ui.result_search.ResultSearchViewModel
 import com.elf.wartegku.webservices.ApiClient
 import org.koin.android.ext.koin.androidContext
@@ -36,6 +37,8 @@ val repositoryModules = module {
     factory { CategoryRepository(get()) }
     factory { StoreRepository(get()) }
     factory { FoodRepository(get()) }
+    factory { OrderRepository(get()) }
+    factory { UserRepository(get()) }
 }
 
 val viewModelModules = module {
@@ -44,4 +47,7 @@ val viewModelModules = module {
     viewModel { ResultSearchViewModel(get()) }
     viewModel { StoreViewModel(get()) }
     viewModel { FoodViewModel(get()) }
+    viewModel { CheckoutViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
+    viewModel { RegisterViewModel(get()) }
 }

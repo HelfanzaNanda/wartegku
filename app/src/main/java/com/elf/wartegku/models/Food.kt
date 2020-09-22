@@ -11,9 +11,9 @@ data class Food (
     @SerializedName("description") var description : String? = null,
     @SerializedName("price") var price : Int? = null,
     @SerializedName("image") var image : String? = null,
+    //@SerializedName("store") var store: Store? = null,
     var qty : Int? = 0
 ) : Parcelable
-
 
 @Parcelize
 data class FoodSelected (

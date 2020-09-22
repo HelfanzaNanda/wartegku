@@ -1,10 +1,8 @@
 package com.elf.wartegku.webservices
 
-import com.elf.wartegku.models.Category
-import com.elf.wartegku.models.Food
-import com.elf.wartegku.models.Store
-import com.elf.wartegku.models.User
+import com.elf.wartegku.models.*
 import com.google.gson.annotations.SerializedName
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -55,6 +53,13 @@ interface ApiService {
 
     @GET("api/food/latest")
     fun fetchFoodsLatest() : Call<WrappedListResponse<Food>>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/order")
+    fun order(
+        @Header("Authorization") token : String,
+        @Body body : RequestBody
+    ) : Call<WrappedResponse<Order>>
 }
 
 data class WrappedResponse<T>(

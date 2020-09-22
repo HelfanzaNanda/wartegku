@@ -1,8 +1,9 @@
-package com.elf.wartegku.ui.food.detail_store
+package com.elf.wartegku.ui.detail_store
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,10 +11,7 @@ import coil.api.load
 import com.elf.wartegku.R
 import com.elf.wartegku.models.Food
 import com.elf.wartegku.models.Store
-import com.elf.wartegku.ui.food.FoodClickInterface
-import com.elf.wartegku.ui.food.FoodState
-import com.elf.wartegku.ui.food.FoodViewModel
-import com.elf.wartegku.ui.food.checkout.CheckoutActivity
+import com.elf.wartegku.ui.checkout.CheckoutActivity
 import com.elf.wartegku.utils.Constants
 import com.elf.wartegku.utils.ext.gone
 import com.elf.wartegku.utils.ext.toast
@@ -22,8 +20,10 @@ import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.DoubleBounce
 import kotlinx.android.synthetic.main.content_detail_store.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.ArrayList
 
-class DetailStoreActivity : AppCompatActivity(), FoodClickInterface {
+class DetailStoreActivity : AppCompatActivity(),
+    FoodClickInterface {
 
     private val foodViewModel : FoodViewModel by viewModel()
 
@@ -92,13 +92,15 @@ class DetailStoreActivity : AppCompatActivity(), FoodClickInterface {
         txt_qty.text = "${getTotalItem()} item"
         txt_name_store.text = getPassedStore()?.name
         txt_total_price.text = Constants.setToIDR(getTotalPrice())
-
     }
 
     private fun finishSelectFoods(foods: List<Food>) {
         card_checkout.setOnClickListener {
-            foodViewModel.setSelectedFoods(foods)
-            //startActivity(Intent(this@DetailStoreActivity, CheckoutActivity::class.java))
+            startActivity(Intent(this@DetailStoreActivity, CheckoutActivity::class.java).apply {
+                putExtra("SELECTED_FOODS", foods as ArrayList<out Parcelable>)
+                putExtra("TOTAL_PRICE", getTotalPrice())
+                putExtra("STORE", getPassedStore())
+            })
         }
     }
 
@@ -126,7 +128,7 @@ class DetailStoreActivity : AppCompatActivity(), FoodClickInterface {
         fetchFoodsByStore()
     }
 
-    override fun add(food: Food) = foodViewModel.addSelectedProduct(food)
+    override fun add(food: Food) = foodViewModel.addSelectedFood(food)
     override fun increment(food: Food) = foodViewModel.incrementQuantity(food)
     override fun decrement(food: Food) = foodViewModel.decrementQuantity(food)
 }

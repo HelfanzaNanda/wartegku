@@ -39,6 +39,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 app:errorEnabled="true"
                 android:id="@+id/til_email"
                 android:layout_width="match_parent"
@@ -54,6 +55,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 app:passwordToggleEnabled="true"
                 app:errorEnabled="true"
                 android:id="@+id/til_pass"

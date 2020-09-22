@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.elf.wartegku.R
 import com.elf.wartegku.ui.IntroActivity
 import com.elf.wartegku.ui.main.home.HomeFragment
+import com.elf.wartegku.ui.main.profile.ProfileFragment
 import com.elf.wartegku.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -48,12 +49,12 @@ class MainActivity : AppCompatActivity() {
 //                }
 //            }
 //
-//            R.id.navigation_profile -> {
-//                if(navStatus != 2){
-//                    fragment = ProfileFragment()
-//                    navStatus = 2
-//                }
-//            }
+            R.id.navigation_profile -> {
+                if(navStatus != 2){
+                    fragment = ProfileFragment()
+                    navStatus = 2
+                }
+            }
         }
         if(fragment == null){
             navStatus = 0
